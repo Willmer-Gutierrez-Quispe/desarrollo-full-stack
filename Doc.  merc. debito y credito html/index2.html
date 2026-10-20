@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinámica Interactiva: Tarjetas de Crédito y Débito en Bolivia</title>
+    <style>
+        /* --- RESETEO Y FUENTES --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        /* --- CONTENEDOR DE 1080PX --- */
+        .wrapper-dinamica {
+            background-color: #ffffff;
+            max-width: 1080px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.06);
+            padding: 40px;
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- ENCABEZADO --- */
+        .header-dinamica {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #f1f5f9;
+            padding-bottom: 25px;
+        }
+
+        .header-dinamica h1 {
+            color: #1e3a8a; /* Azul financiero */
+            font-size: 2.6rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .header-dinamica p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        /* --- SECCIÓN DE PREGUNTAS --- */
+        .seccion-preguntas {
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .tarjeta-pregunta {
+            background-color: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 30px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .tarjeta-pregunta:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        /* Etiquetas */
+        .badge-tipo {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-multiple { background-color: #dbeafe; color: #1e40af; }
+        .badge-general { background-color: #fef3c7; color: #b45309; }
+
+        .pregunta-texto {
+            font-size: 1.3rem;
+            color: #0f172a;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        /* --- FORMATOS DE RESPUESTA --- */
+        .grid-opciones {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .opcion-item {
+            background-color: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1.05rem;
+            color: #475569;
+            font-weight: 500;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .opcion-item:hover {
+            border-color: #cbd5e1;
+            background-color: #f1f5f9;
+        }
+
+        /* Permite seleccionar una opción visualmente antes de ver la respuesta */
+        .opcion-item.seleccionada {
+            border-color: #3b82f6;
+            background-color: #eff6ff;
+            color: #1d4ed8;
+        }
+
+        .campo-completar {
+            width: 100%;
+            max-width: 500px;
+            padding: 12px 16px;
+            font-size: 1rem;
+            border: 2px solid #cbd5e1;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            margin-bottom: 20px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .campo-completar:focus {
+            border-color: #3b82f6;
+            background-color: #ffffff;
+        }
+
+        /* --- BOTÓN MOSTRAR RESPUESTA --- */
+        .btn-mostrar-respuesta {
+            background-color: #1e3a8a;
+            color: #ffffff;
+            border: none;
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-mostrar-respuesta:hover {
+            background-color: #1d4ed8;
+        }
+
+        /* --- RESPUESTA OCULTA (DISPLAY: NONE POR DEFECTO) --- */
+        .bloque-respuesta-revelada {
+            display: none; /* Asegura que inicien ocultas */
+            margin-top: 20px;
+            padding: 18px 24px;
+            border-radius: 10px;
+            background-color: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #16a34a;
+            font-size: 1.1rem;
+            font-weight: 600;
+            align-items: flex-start;
+            gap: 12px;
+            animation: aparecer 0.25s ease-in-out forwards;
+        }
+
+        @keyframes aparecer {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .bloque-respuesta-revelada span {
+            font-size: 1.3rem;
+        }
+
+        .bloque-respuesta-revelada div strong {
+            color: #14532d;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        /* --- RESPONSIVO --- */
+        @media (max-width: 768px) {
+            .wrapper-dinamica { padding: 20px; }
+            .header-dinamica h1 { font-size: 1.9rem; }
+            .grid-opciones { grid-template-columns: 1fr; }
+            .btn-mostrar-respuesta { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="wrapper-dinamica">
+        
+        <header class="header-dinamica">
+            <h1>Tarjetas de débito y crédito</h1>
+            <p>Dinámica interactiva sobre el sistema financiero en Bolivia</p>
+        </header>
+
+        <section class="seccion-preguntas">
+
+            <!-- ================= PREGUNTA 1 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-multiple">Selección Múltiple 1</span>
+                <h2 class="pregunta-texto">¿En qué año dio inicio la implementación de las tarjetas en Bolivia?</h2>
+                
+                <div class="grid-opciones">
+                    <div class="opcion-item" onclick="marcarOpcion(this)">1991</div>
+                    <div class="opcion-item" onclick="marcarOpcion(this)">2000</div>
+                    <div class="opcion-item" onclick="marcarOpcion(this)">1990</div>
+                    <div class="opcion-item" onclick="marcarOpcion(this)">1995</div>
+                </div>
+
+                <button class="btn-mostrar-respuesta" onclick="alternarRespuesta(this)">Mostrar Respuesta 👀</button>
+
+                <div class="bloque-respuesta-revelada">
+                    <span>💡</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        1990
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PREGUNTA 2 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-multiple">Selección Múltiple 2</span>
+                <h2 class="pregunta-texto">¿Cuántos dígitos posee una tarjeta?</h2>
+                
+                <div class="grid-opciones">
+                    <div class="opcion-item" onclick="marcarOpcion(this)">10</div>
+                    <div class="opcion-item" onclick="marcarOpcion(this)">12</div>
+                    <div class="opcion-item" onclick="marcarOpcion(this)">14</div>
+                    <div class="opcion-item" onclick="marcarOpcion(this)">13</div>
+                </div>
+
+                <button class="btn-mostrar-respuesta" onclick="alternarRespuesta(this)">Mostrar Respuesta 👀</button>
+
+                <div class="bloque-respuesta-revelada">
+                    <span>💡</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        14
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PREGUNTA 3 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-multiple">Selección Múltiple 3</span>
+                <h2 class="pregunta-texto">¿Usar una tarjeta de débito genera deudas?</h2>
+                
+                <div class="grid-opciones">
+                    <div class="opcion-item" onclick="marcarOpcion(this)">Falso</div>
+                    <div class="opcion-item" onclick="marcarOpcion(this)">Verdadero</div>
+                </div>
+
+                <button class="btn-mostrar-respuesta" onclick="alternarRespuesta(this)">Mostrar Respuesta 👀</button>
+
+                <div class="bloque-respuesta-revelada">
+                    <span>💡</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        Falso
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PREGUNTA 4 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-general">Pregunta General 4</span>
+                <h2 class="pregunta-texto">¿Qué entidad se encarga de controlar el uso de los fondos de una tarjeta de débito o crédito?</h2>
+                
+                <input type="text" class="campo-completar" placeholder="Escribe tu respuesta analítica aquí...">
+                <br>

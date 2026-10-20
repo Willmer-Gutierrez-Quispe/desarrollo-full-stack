@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TARJETAS DE DÉBITO Y CRÉDITO</title>
+    <link rel="stylesheet" type="text/css" href="./css/estilos.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <main class="wrapper-dinamica">
+        
+        <header class="header-dinamica">
+            <h1>TARJETAS DE DEBITO Y CREDITO</h1>
+            <p>El Sistema Financiero en Bolivia</p>
+        </header>
+
+        <section class="seccion-preguntas">
+
+            <!-- ================= PREGUNTA 1 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-multiple">Selección Múltiple 1</span>
+                <h2 class="pregunta-texto">¿En qué año dio inicio la implementación de las tarjetas en Bolivia?</h2>
+                
+                <div class="grid-opciones">
+                    <div class="opcion-item">1991</div>
+                    <div class="opcion-item">2000</div>
+                    <div class="opcion-item">1990</div>
+                    <div class="opcion-item">1995</div>
+                </div>
+
+                <button id="R1" class="btn-mostrar-respuesta"  >Mostrar Respuesta 👀</button>
+
+                <!-- Vista simulada de la respuesta revelada -->
+                <div id="preg1"class="p1" >
+                  <div class="bloque-respuesta-revelada">
+                    <span>💡</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        1990
+                    </div>
+                </div>  
+                </div>
+                
+            </div>
+            <!-- ================= PREGUNTA 2 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-multiple">Selección Múltiple 2</span>
+                <h2 class="pregunta-texto">¿Cuántos dígitos posee una tarjeta?</h2>
+                
+                <div class="grid-opciones">
+                    <div class="opcion-item">16</div>
+                    <div class="opcion-item">12</div>
+                    <div class="opcion-item">14</div>
+                    <div class="opcion-item">13</div>
+                </div>
+
+                <button id="R2" class="btn-mostrar-respuesta">Mostrar Respuesta 👀</button>
+                <div id="preg2" class="p2">
+                    <div class="bloque-respuesta-revelada">
+                    <span>💡</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        16
+                    </div>
+                </div>
+                </div>
+                
+            </div>
+
+            <!-- ================= PREGUNTA 3 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-multiple">Selección Múltiple 3</span>
+                <h2 class="pregunta-texto">¿Usar una tarjeta de débito genera deudas?</h2>
+                
+                <div class="grid-opciones">
+                    <div class="opcion-item">Falso</div>
+                    <div class="opcion-item">Verdadero</div>
+                </div>
+
+                <button id="R3" class="btn-mostrar-respuesta">Mostrar Respuesta 👀</button>
+                <div id="preg3" class="p3">
+                  <div class="bloque-respuesta-revelada">
+                    <span>💡</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        Falso
+                    </div>
+                </div>  
+                </div>
+                
+            </div>
+
+            <!-- ================= PREGUNTA 4 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-general">Pregunta 1 </span>
+                <h2 class="pregunta-texto">¿Qué entidad se encarga de controlar el uso de los fondos de una tarjeta de débito o crédito?</h2>
+                <br>
+                <button id="R4" class="btn-mostrar-respuesta">Mostrar Respuesta 👀</button>
+                <div id="preg4" class="p4">
+                   <div class="bloque-respuesta-revelada">
+                    <span>🏛️</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        La ASFI (Autoridad de Supervisión del Sistema Financiero)
+                    </div>
+                </div> 
+                </div>
+                
+            </div>
+
+            <!-- ================= PREGUNTA 5 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-general">Pregunta 2</span>
+                <h2 class="pregunta-texto">¿Cual empresa se encarga de gestionar los pagos con tarjetas y cuanto cobran?</h2>
+                
+              
+                <br>
+                <button id="R5" class="btn-mostrar-respuesta">Mostrar Respuesta 👀</button>
+                <div id="preg5" class="p5">
+                 <div class="bloque-respuesta-revelada">
+                    <span>🏛️</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        LINKSER con una comision del 2% por cada transaccion.
+                    </div>
+                </div>   
+                </div>
+                
+            </div>
+             <!-- ================= PREGUNTA 6 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-general">Pregunta 3</span>
+                <h2 class="pregunta-texto">¿Que tipo de tarjetas de credito hay? mensione 3</h2>
+                
+                
+                <br>
+                <button id="R6" class="btn-mostrar-respuesta">Mostrar Respuesta 👀</button>
+                <div id="preg6" class="p6">
+                  <div class="bloque-respuesta-revelada">
+                    <span>🏛️</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        Clasica, oro, platino o signature, infiniti / diamond, compartidas
+                    </div>
+                </div>  
+                </div>
+                
+            </div>
+            <!-- ================= PREGUNTA 7 ================= -->
+            <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-general">Pregunta 4</span>
+                <h2 class="pregunta-texto">¿Se puede retirar un monto mayor a Bs. 2000 de un cajeto ATM?</h2>
+                
+               
+                <br>
+                <button id="R7" class="btn-mostrar-respuesta">Mostrar Respuesta 👀</button>
+                <div id="preg7" class="p7">
+                 <div class="bloque-respuesta-revelada">
+                    <span>🏛️</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        si, siempre y cuando se cuente con una autorizacion de la entidad financiera
+                    </div>
+                </div>   
+                </div>
+                
+            </div>
+            <!-- ================= PREGUNTA 8 ================= -->
+             <div class="tarjeta-pregunta">
+                <span class="badge-tipo badge-general">Pregunta 5</span>
+                <h2 class="pregunta-texto">¿Cual es el monto a cancelar por una nueva tarjeta de credito?</h2>
+                
+               
+                <br>
+                <button id="R8" class="btn-mostrar-respuesta">Mostrar Respuesta 👀</button>
+                <div id="preg8" class="p8">
+                  <div class="bloque-respuesta-revelada">
+                    <span>🏛️</span>
+                    <div>
+                        <strong>Respuesta Correcta:</strong>
+                        Bs. 70
+                    </div>
+                </div>  
+                </div>
+                
+            </div>
+
+
+
+
+
+           
+            <script src="js/script.js"></script>
+
+</body>
+</html>
